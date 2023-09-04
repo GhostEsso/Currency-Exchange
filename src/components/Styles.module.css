@@ -1,0 +1,13 @@
+.link {
+    text-decoration: none;
+    transition: .5s;
+    border-radius: 5px;
+    padding: 5px;
+}
+.link:hover {
+    background-color: rgb(102, 102, 204);
+}
+
+.falseLine {
+    color: red;
+}

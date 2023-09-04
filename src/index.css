@@ -1,6 +1,10 @@
 header {
-  color: blue;
+  background-color: rgb(204, 204, 228);
   display: flex;
   justify-content: center;
   align-content: center;
+}
+
+.Container {
+  background-color: red;
 }
