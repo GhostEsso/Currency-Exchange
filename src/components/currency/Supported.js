@@ -35,8 +35,6 @@ const Support = () => {
     );
   }
 
-  const rates = Object.entries(latest.rates).slice(0, 6);
-
   return (
     <section className="support">
       <div className="details">
@@ -71,7 +69,7 @@ const Support = () => {
         <div className="Latest">
           <h1>Latest Prices Conversion</h1>
           <ul className="rates">
-            {rates.map(([currencyCode, rate]) => (
+            {Object.entries(latest.rates).slice(0, 6).map(([currencyCode, rate]) => (
               <li key={currencyCode}>
                 <span>{currencyCode}</span>
                 :
