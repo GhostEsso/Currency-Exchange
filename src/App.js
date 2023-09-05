@@ -1,9 +1,11 @@
+import CurrencyExchange from './components/Currency';
+import Navigation from './components/Navigation';
+
 function App() {
   return (
-    <div>
-      <header className="header">
-        <h1>CurrencyExchange Project</h1>
-      </header>
+    <div className="App">
+      <Navigation />
+      <CurrencyExchange />
     </div>
   );
 }
