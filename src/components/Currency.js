@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from './currencyComponents/Home';
-import Support from './currencyComponents/Supported';
+import Home from './currency/Home';
+import Support from './currency/Supported';
 
 const CurrencyExchange = () => (
   <Routes>

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { LatestData } from '../../redux/api';
@@ -25,14 +25,17 @@ const Support = () => {
     );
   }
 
-  if (!latest || !latest.rates) {
-    return '...loading'; // or any loading indicator you prefer
+  if (!latest || !latest.rates || status) {
+    return (
+      <section className="support">
+        <div className="details">
+          <h2>...loading</h2>
+        </div>
+      </section>
+    );
   }
 
-  const rates = Object.entries(latest.rates);
-  if (status) {
-    return '...loading';
-  }
+  const rates = Object.entries(latest.rates).slice(0, 6);
 
   return (
     <section className="support">
@@ -45,27 +48,22 @@ const Support = () => {
           <ul>
             <li>
               <span>Currency Name: </span>
-              {' '}
               <span>{selectedExchange.currencyName}</span>
             </li>
             <li>
               <span>Currency Code: </span>
-              {' '}
               <span>{selectedExchange.currencyCode}</span>
             </li>
             <li>
               <span>Country Code: </span>
-              {' '}
               <span>{selectedExchange.countryCode}</span>
             </li>
             <li>
               <span>Available From: </span>
-              {' '}
               <span>{selectedExchange.availableFrom}</span>
             </li>
             <li>
               <span>Available Until: </span>
-              {' '}
               <span>{selectedExchange.availableUntil}</span>
             </li>
           </ul>
@@ -73,7 +71,7 @@ const Support = () => {
         <div className="Latest">
           <h1>Latest Prices Conversion</h1>
           <ul className="rates">
-            {rates.slice(0, 6).map(([currencyCode, rate]) => (
+            {rates.map(([currencyCode, rate]) => (
               <li key={currencyCode}>
                 <span>{currencyCode}</span>
                 :
