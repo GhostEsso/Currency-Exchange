@@ -6,6 +6,10 @@
   font-weight: 300;
 }
 
+body {
+  background-color: #ff5d9b;
+}
+
 header {
   display: flex;
   flex-direction: row;
