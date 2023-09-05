@@ -1,25 +1,25 @@
 import { NavLink } from 'react-router-dom';
-import styles from './Styles.module.css';
 
-const Navbar = () => (
+const Navigation = () => (
   <header>
+    <h1>
+      <a href="/">Currency Converter</a>
+    </h1>
     <nav>
       <ul className="menu">
         <li>
-          <NavLink className={styles.link} to="/">
-            {' '}
-            <i className="fa fa-solid fa-angle-left" />
-            {' '}
+          <NavLink className={StyleSheet.link} to="/">
+            Converter
           </NavLink>
         </li>
         <li>
-          {' '}
-          <i className="fa fa-solid fa-microphone" />
-          <i className="fa fa-solid fa-gear" />
-          {' '}
+          <NavLink className={StyleSheet.link} to="/">
+            Currencies Supported
+          </NavLink>
         </li>
       </ul>
     </nav>
   </header>
 );
-export default Navbar;
+
+export default Navigation;
