@@ -12,7 +12,7 @@ const Card = () => {
   }, [dispatch]);
 
   const { exchange, filters } = useSelector((state) => state.exchange);
-  const Limit = Object.values(exchange).slice(0, 18);
+  const Limit = Object.values(exchange).slice(0, 20);
 
   if (filters && filters.length > 0) {
     return (
