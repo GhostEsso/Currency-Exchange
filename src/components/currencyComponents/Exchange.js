@@ -1,113 +1,73 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { v4 as uuidv4 } from 'uuid';
-import { FetchData, GetData } from '../../redux/api';
-import { add } from '../../redux/exchangeSlice';
+import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { FetchData } from '../../redux/api';
+import styles from '../Styles.module.css';
 
-const Exchange = () => {
+const Card = () => {
   const dispatch = useDispatch();
-  const { exchange } = useSelector((state) => state.exchange);
-  const newData = Object.values(exchange);
-
-  const [selectedOption, setSelectedOption] = useState('');
-  const [selectedOptions, setSelectedOptions] = useState('');
-  const [data, setData] = useState('');
 
   useEffect(() => {
     dispatch(FetchData());
   }, [dispatch]);
 
-  const handleSelectChange = (event, setter) => {
-    const selectedValue = event.target.value;
-    const selectedCurrency = newData.find(
-      (item) => item.currencyCode === selectedValue,
-    );
-    setter(selectedValue);
-    dispatch(add(selectedCurrency?.icon || ''));
-  };
+  const { exchange, filters } = useSelector((state) => state.exchange);
+  const Limit = Object.values(exchange).slice(0, 18);
 
-  const onChange = (e) => {
-    setData(e.target.value);
-  };
-
-  const onSubmit = () => {
-    const from = selectedOption || 'AGLD';
-    const to = selectedOptions || 'AGLD';
-    dispatch(GetData({ amount: data, from, to }));
-    setSelectedOption('');
-    setSelectedOptions('');
-    setData('');
-  };
-
-  return (
-    <div className="Exchange">
-      <form action="#">
-        <div className="formInside">
-          <label htmlFor="amount">
-            <span>Amount</span>
-            <input
-              type="number"
-              onChange={onChange}
-              value={data}
-              name="amount"
-            />
-          </label>
-          <label htmlFor="from">
-            <span>From</span>
-            <div className="selectors">
-              <select
-                name="from"
-                id="from"
-                value={selectedOption}
-                onChange={(e) => handleSelectChange(e, setSelectedOption)}
-              >
-                {newData.map((item) => (
-                  <option
-                    key={uuidv4()}
-                    value={item.currencyCode}
-                    label={item.currencyCode}
-                  >
-                    {item.currencyCode}
-                  </option>
-                ))}
-              </select>
+  if (filters && filters.length > 0) {
+    return (
+      <Link
+        to={`/support/${filters[0].currencyCode}`}
+        key={filters[0].currencyCode}
+        className={styles.styleLink}
+      >
+        <div className="CardContainer">
+          <div className="cards">
+            <img src={filters[0].icon} alt="" />
+            <div className="currency">
+              <h1>Currency Names:</h1>
+              <p>{filters[0].currencyName}</p>
             </div>
-          </label>
-          <p className="equal">
-            {selectedOption && (
-              <img id="selectedIcon" src={selectedOption} alt="" />
-            )}
-            =
-            {selectedOptions && (
-              <img id="selectedIcon" src={selectedOptions} alt="" />
-            )}
-          </p>
-          <label htmlFor="to">
-            <span>To</span>
-            <div className="selectors">
-              <select
-                name="to"
-                id="to"
-                value={selectedOptions}
-                onChange={(e) => handleSelectChange(e, setSelectedOptions)}
-              >
-                {newData.map((item) => (
-                  <option
-                    key={uuidv4()}
-                    value={item.currencyCode}
-                    label={item.currencyCode}
-                  >
-                    {item.currencyCode}
-                  </option>
-                ))}
-              </select>
+            <div className="date">
+              <p>
+                {filters[0].availableFrom}
+                {' '}
+                -
+                {filters[0].availableUntil}
+              </p>
             </div>
-          </label>
+          </div>
         </div>
-        <input type="button" value="Convert" onClick={onSubmit} />
-      </form>
+      </Link>
+    );
+  }
+  return (
+    <div className="Containers">
+      {Limit.map((currency) => (
+        <Link
+          to={`/support/${currency.currencyCode}`}
+          key={currency.currencyCode}
+          className={styles.styleLink}
+        >
+          <div className="card">
+            <img src={currency.icon} alt="" />
+            <div className="currency">
+              <h1>Currency Names:</h1>
+              <p>{currency.currencyCode}</p>
+            </div>
+            <div className="date">
+              <p>
+                {currency.availableFrom}
+                {' '}
+                -
+                {currency.availableUntil}
+              </p>
+            </div>
+          </div>
+        </Link>
+      ))}
     </div>
   );
 };
 
-export default Exchange;
+export default Card;

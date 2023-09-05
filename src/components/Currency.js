@@ -5,7 +5,7 @@ import Support from './currencyComponents/Supported';
 const CurrencyExchange = () => (
   <Routes>
     <Route path="/" element={<Home />} />
-    <Route path="/support" element={<Support />} />
+    <Route path="/support/:currencyCode" element={<Support />} />
   </Routes>
 );
 export default CurrencyExchange;

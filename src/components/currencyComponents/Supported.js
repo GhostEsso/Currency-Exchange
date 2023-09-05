@@ -1,55 +1,87 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import { FetchData } from '../../redux/api';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { LatestData } from '../../redux/api';
+import { filterdata } from '../../redux/exchangeSlice';
 
 const Support = () => {
+  const { currencyCode } = useParams();
   const dispatch = useDispatch();
-  const { exchange, error, status } = useSelector((state) => state.exchange);
+  const { exchange, latest, status } = useSelector((state) => state.exchange);
+  const selectedExchange = exchange[currencyCode];
 
   useEffect(() => {
-    dispatch(FetchData());
-  }, [dispatch]);
+    dispatch(LatestData(currencyCode));
+    dispatch(filterdata(''));
+  }, [currencyCode, dispatch]);
 
-  if (error) {
-    return error;
+  if (!selectedExchange) {
+    return (
+      <section className="support">
+        <div className="details">
+          <h2>Currency not found</h2>
+        </div>
+      </section>
+    );
   }
 
+  if (!latest || !latest.rates) {
+    return '...loading'; // or any loading indicator you prefer
+  }
+
+  const rates = Object.entries(latest.rates);
   if (status) {
-    return 'Loading...';
+    return '...loading';
   }
 
   return (
     <section className="support">
-      <div className="supportContainer">
-        <h1>Support Currencies</h1>
-        <ul className="supportList">
-          {exchange.map((item) => {
-            const {
-              currencyName,
-              countryName,
-              countryCode,
-              icon,
-              availableFrom,
-              availableUntil,
-              status,
-            } = item;
-            return (
-              <li key={uuidv4()}>
-                <img src={icon} alt="" />
-                <p>{currencyName}</p>
-                <p>{countryCode}</p>
-                <p>
-                  {availableFrom}
-                  -
-                  {availableUntil}
-                </p>
-                <p>{countryName}</p>
-                <p className="status">{status}</p>
+      <div className="details">
+        <div className="detailsTop">
+          <img src={selectedExchange.icon} alt="" />
+          <h2>{selectedExchange.countryName}</h2>
+        </div>
+        <div className="detailsmain">
+          <ul>
+            <li>
+              <span>Currency Name: </span>
+              {' '}
+              <span>{selectedExchange.currencyName}</span>
+            </li>
+            <li>
+              <span>Currency Code: </span>
+              {' '}
+              <span>{selectedExchange.currencyCode}</span>
+            </li>
+            <li>
+              <span>Country Code: </span>
+              {' '}
+              <span>{selectedExchange.countryCode}</span>
+            </li>
+            <li>
+              <span>Available From: </span>
+              {' '}
+              <span>{selectedExchange.availableFrom}</span>
+            </li>
+            <li>
+              <span>Available Until: </span>
+              {' '}
+              <span>{selectedExchange.availableUntil}</span>
+            </li>
+          </ul>
+        </div>
+        <div className="Latest">
+          <h1>Latest Prices Conversion</h1>
+          <ul className="rates">
+            {rates.slice(0, 6).map(([currencyCode, rate]) => (
+              <li key={currencyCode}>
+                <span>{currencyCode}</span>
+                :
+                <span>{rate}</span>
               </li>
-            );
-          })}
-        </ul>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );
