@@ -5,9 +5,3 @@ exports[`Exchange Display renders correctly 1`] = `
   className="Containers"
 />
 `;
-
-exports[`Exchange Display should render Exchange component correctly 1`] = `
-<div
-  className="Containers"
-/>
-`;

@@ -13,13 +13,15 @@ const Navbar = () => (
           </NavLink>
         </li>
         <li>
-          {' '}
-          <i className="fa fa-solid fa-microphone" />
-          <i className="fa fa-solid fa-gear" />
-          {' '}
+          <NavLink to="/weather-app/" className="link"><h4>Currencies</h4></NavLink>
+        </li>
+        <li>
+          <i className="fa fa-solid fa-microphone" data-testid="microphone-icon" />
+          <i className="fa fa-solid fa-gear" data-testid="gear-icon" />
         </li>
       </ul>
     </nav>
   </header>
 );
+
 export default Navbar;

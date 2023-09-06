@@ -3,10 +3,12 @@ import { render } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from '../redux/store';
-import Support from './Support';
+import Support from '../components/currency/Supported';
 
-import '@testing-library/jest-dom/extend-expect';
+// Import jest-dom for additional matchers
+import '@testing-library/jest-dom/';
 
+// Mock axios
 jest.mock('axios', () => ({
   get: jest.fn().mockResolvedValue({
     data: {
@@ -15,8 +17,7 @@ jest.mock('axios', () => ({
   }),
 }));
 
-test('Support component renders correctly', () => {
-  // Arrange: Render the Support component within the required context
+test('renders Support component', () => {
   const { getByText, asFragment } = render(
     <Provider store={store}>
       <Router>
@@ -25,11 +26,9 @@ test('Support component renders correctly', () => {
     </Provider>,
   );
 
-  // Act: Attempt to find the heading element
   const headingElement = getByText('Currency not found');
-
-  // Assert: Check if the heading element is present
   expect(headingElement).toBeInTheDocument();
 
+  // Take a snapshot of the rendered component
   expect(asFragment()).toMatchSnapshot();
 });

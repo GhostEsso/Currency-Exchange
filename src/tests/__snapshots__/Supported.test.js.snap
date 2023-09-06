@@ -1,21 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Support component renders correctly 1`] = `
-<DocumentFragment>
-  <section
-    class="support"
-  >
-    <div
-      class="details"
-    >
-      <h2>
-        Currency not found
-      </h2>
-    </div>
-  </section>
-</DocumentFragment>
-`;
-
 exports[`renders Support component 1`] = `
 <DocumentFragment>
   <section

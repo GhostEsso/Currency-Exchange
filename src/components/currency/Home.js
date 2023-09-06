@@ -11,7 +11,9 @@ const Home = () => {
 
   const search = (e) => {
     const { value } = e.target;
-    const filterData = limitValues.filter((item) => item.currencyCode === value.toUpperCase());
+    const filterData = limitValues.filter((item) =>
+      item.currencyCode.toUpperCase().includes(value.toUpperCase())
+    );
     dispatch(filterdata(filterData));
     setResult(value);
   };

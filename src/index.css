@@ -1,11 +1,11 @@
 @import '~font-awesome/css/font-awesome.css';
 
 * {
-  padding: 0;
+  padding: 10px;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: 300;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 100;
 }
 
 body {
@@ -41,6 +41,7 @@ header nav {
   flex-direction: row;
   gap: 5px;
   color: #fff;
+  height: 35px;
 }
 
 .menu .active {
@@ -55,25 +56,40 @@ header nav {
   color: #fff;
 }
 
+.fa-angle-left:before {
+  color: white;
+  margin-left: 5px;
+  font-weight: bolder;
+}
+
+.fa-microphone:before {
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+.fa-gear:before {
+  font-size: 17px;
+  margin-right: 5px;
+  font-weight: lighter;
+}
+
 .Containers {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 20px 0;
-  padding: 20px 20px;
   justify-content: center;
-  gap: 10px;
+  gap: 0;
 }
 
 .Containers .card {
   border: 1px solid rgb(122, 117, 117);
   box-shadow: 0 0 10px rgb(168, 156, 156);
-  background-color: #893253;
+  background-color: #b1446e;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 16vw;
-  height: 24vh;
+  height: 27vh;
   border-radius: 5px;
   padding: 10px;
   gap: 2px;
@@ -234,7 +250,7 @@ header nav {
   color: #fff;
   height: 40vh !important;
   border-radius: 5px;
-  transition: 0.5s;
+  transition: 0.1s;
 }
 
 .cards img {
@@ -272,7 +288,7 @@ header nav {
   }
 
   .card {
-    width: 30vw !important;
+    width: 45vw !important;
     height: 30vh !important;
     display: flex;
     padding: 10px 10px !important;
@@ -321,7 +337,7 @@ header nav {
 
   input {
     width: 60% !important;
-    height: 6vh !important;
+    height: 5vh !important;
     border-radius: 10px !important;
     text-indent: 10px !important;
   }

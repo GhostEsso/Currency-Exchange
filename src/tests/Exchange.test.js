@@ -5,8 +5,8 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import axios from 'axios';
 import { Provider } from 'react-redux';
-import Exchange from './Exchange';
-import { FetchData } from './api';
+import Exchange from '../../src/components/currency/Exchange';
+import { FetchData } from '../redux/api';
 
 // Mock axios module
 jest.mock('axios', () => ({
@@ -27,31 +27,20 @@ const mockStore = configureStore([thunk])({
 });
 
 describe('Exchange Display', () => {
-  it('should render Exchange component correctly', () => {
-    // Arrange
-    const component = (
+  it('renders correctly', () => {
+    const tree = renderer.create(
       <Provider store={mockStore}>
         <BrowserRouter>
           <Exchange />
         </BrowserRouter>
-      </Provider>
-    );
-
-    // Act
-    const tree = renderer.create(component).toJSON();
-
-    // Assert
+      </Provider>,
+    ).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  it('should call FetchData with the correct URL', async () => {
-    // Arrange
-    const expectedURL = 'https://api.currencyfreaks.com/v2.0/supported-currencies';
+  it('performs FetchData correctly', async () => {
+    await mockStore.dispatch(FetchData()); // Dispatch the action asynchronously
 
-    // Act
-    await mockStore.dispatch(FetchData());
-
-    // Assert
-    expect(axios.get).toHaveBeenCalledWith(expectedURL);
+    expect(axios.get).toHaveBeenCalledWith('https://api.currencyfreaks.com/v2.0/supported-currencies');
   });
 });
