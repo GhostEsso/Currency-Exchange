@@ -50,6 +50,8 @@
 
 - [Link](https://currency-exchange-clnb.onrender.com/)
 
+- [Video](https://www.loom.com/share/130cd4b846b2427b913277ff44560791)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 💻 Getting Started <a name="getting-started"></a>
