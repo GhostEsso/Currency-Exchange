@@ -6,9 +6,7 @@ import {
 const initialState = {
   exchange: [],
   filters: [],
-  latest: {
-    rates: {},
-  },
+  latest: [],
   status: false,
   error: null,
 };
