@@ -50,7 +50,7 @@
 
 - [Link](https://currency-exchange-clnb.onrender.com/)
 
-- [Video](https://www.loom.com/share/130cd4b846b2427b913277ff44560791)
+- [Video](https://www.loom.com/share/266c3ce0534541f0af2014e9a7472d99)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
