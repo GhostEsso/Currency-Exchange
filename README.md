@@ -45,10 +45,10 @@
 
 <!-- LIVE DEMO -->
 
-## :rocket: Live Demo <a name="live-demo"></a>
+## Live Demo <a name="live-demo"></a>
 
 
-- [Link]()
+- [Link](https://currency-exchange-clnb.onrender.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
