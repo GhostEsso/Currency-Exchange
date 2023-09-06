@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import axios from 'axios';
 import { Provider } from 'react-redux';
-import Exchange from '../../src/components/currency/Exchange';
+import Exchange from '../components/currency/Exchange';
 import { FetchData } from '../redux/api';
 
 // Mock axios module

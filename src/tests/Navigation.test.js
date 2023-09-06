@@ -12,6 +12,6 @@ it('renders correctly with navigation links', () => {
     </Router>,
   );
 
-  const Currencies = screen.getByText("Currencies");
+  const Currencies = screen.getByText('Currencies');
   expect(Currencies).toBeInTheDocument();
 });
