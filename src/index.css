@@ -1,0 +1,356 @@
+@import '~font-awesome/css/font-awesome.css';
+
+* {
+  padding: 10px;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 100;
+}
+
+body {
+  background-color: #fc6fa5;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  background-color: #fe5395;
+  color: #fff;
+  font-family: 'Courier New', Courier, monospace;
+  width: 100%;
+}
+
+header a {
+  color: #fff;
+  text-decoration: none;
+}
+
+header nav {
+  width: 100%;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-direction: row;
+  gap: 5px;
+  color: #fff;
+  height: 35px;
+}
+
+.menu .active {
+  color: rgb(118, 118, 240);
+}
+
+.menu li {
+  padding: 5px;
+  font-size: 20px;
+  display: flex;
+  gap: 25px;
+  color: #fff;
+}
+
+.fa-angle-left::before {
+  color: white;
+  margin-left: 5px;
+  font-weight: bolder;
+}
+
+.fa-microphone::before {
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+.fa-gear::before {
+  font-size: 17px;
+  margin-right: 5px;
+  font-weight: lighter;
+}
+
+.Containers {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0;
+}
+
+.Containers .card {
+  border: 1px solid rgb(122, 117, 117);
+  box-shadow: 0 0 10px rgb(168, 156, 156);
+  background-color: #b1446e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 16vw;
+  height: 27vh;
+  border-radius: 5px;
+  padding: 10px;
+  gap: 2px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card h1 {
+  font-size: 80%;
+  text-align: center;
+  color: rgb(193, 193, 239);
+}
+
+.card p {
+  text-align: center;
+  color: #fff;
+}
+
+.card img {
+  height: 6vh;
+}
+
+.currency {
+  padding: 5px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.currency p {
+  font-size: 12px;
+}
+
+.date {
+  display: flex;
+  flex-direction: column;
+}
+
+.date p {
+  font-size: 12px;
+  color: #debcc9;
+  padding-top: 15px;
+}
+
+.support {
+  display: flex;
+  padding: 20px 100px;
+}
+
+.details {
+  display: flex;
+  background-color: #8a2d51;
+  padding: 0 100px;
+  flex-direction: column;
+  border: 1px solid black;
+  color: #fff;
+  width: 100%;
+  height: 75vh;
+  box-shadow: 0 0 10px rgb(152, 148, 148);
+  border-radius: 5px;
+}
+
+.detailsTop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.detailsTop h2 {
+  color: #fff;
+}
+
+.detailsmain {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  flex-direction: column;
+  padding: 10px 10px;
+  font-size: 16px;
+}
+
+.detailsmain ul {
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+}
+
+.rates li {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.detailsmain ul li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.rates {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+
+.rates li span {
+  width: 10vw;
+  padding: 2px 5%;
+  font-size: 14px;
+}
+
+.rates li span:first-child {
+  color: rgb(187, 187, 227);
+}
+
+.Latest h1 {
+  text-align: center;
+  padding: 10px 0;
+  font-size: 16px;
+}
+
+.HomeTop {
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.HomeTop input {
+  width: 25%;
+  height: 4.5vh;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  font-size: 15px;
+  text-indent: 5px;
+}
+
+.HomeTop h1 {
+  color: #fff;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  width: 30%;
+  background-color: #893253;
+  color: #fff;
+  height: 40vh !important;
+  border-radius: 5px;
+  transition: 0.1s;
+}
+
+.cards img {
+  width: 80%;
+  height: 65%;
+}
+
+.CardContainer {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.cards:hover {
+  transform: scale(1.05);
+}
+
+.cards p {
+  text-align: center;
+}
+
+@media only screen and (max-width: 786px) {
+  * {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .Containers {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 0 !important;
+  }
+
+  .card {
+    width: 45vw !important;
+    height: 30vh !important;
+    display: flex;
+    padding: 10px 10px !important;
+    flex-direction: column;
+  }
+
+  .CardContainer {
+    display: flex;
+    width: 100%;
+    padding: 10px 20px !important;
+  }
+
+  .cards {
+    display: flex;
+    width: 100%;
+    height: 40vh !important;
+    margin: 0 !important;
+  }
+
+  .cards img {
+    width: 40%;
+  }
+
+  .cards p {
+    font-size: 16px;
+  }
+
+  .card img {
+    width: 10vw !important;
+    height: 10vh !important;
+  }
+
+  .card .date p {
+    padding: 10px !important;
+  }
+
+  .support {
+    display: flex;
+    padding: 10px 50px !important;
+  }
+
+  .details {
+    padding: 0 20px !important;
+    height: 90vh;
+  }
+
+  input {
+    width: 60% !important;
+    height: 5vh !important;
+    border-radius: 10px !important;
+    text-indent: 10px !important;
+  }
+
+  .HomeTop {
+    padding: 10px 0 !important;
+  }
+
+  .Latest {
+    padding: 10px 0 !important;
+  }
+
+  .rates {
+    padding: 20px 0 !important;
+  }
+}
